@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background: #111;
+            font-family: 'Great Vibes', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            min-height: 100vh;
+            flex-direction: row;
+        }
+
+        body::before {
+            content: 'Resume';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            font-weight: 400;
+            color: transparent;
+            -webkit-text-stroke: 1px rgb(5, 107, 85);
+
+        }
+
+        .wrapper {
+            margin-top: 30vh;
+        }
+
+        a {
+            position: relative;
+            display: inline-block;
+            padding: 12px 36px;
+            margin: 10px;
+            color: rgb(5, 107, 85);
+            background: transparent;
+            border-radius: 40px;
+            font-size: 16px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: 1s ease;
+        }
+
+        a:hover {
+            background: #262727;
+        }
+
+        span {
+            position: absolute;
+            background: #fff;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            animation: animate .8s linear;
+        }
+
+        @keyframes animate {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: .2;
+            }
+
+            100% {
+                width: 500px;
+                height: 500px;
+                opacity: 0;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            body::before {
+                font-size: 16rem;
+            }
+
+            .wrapper {
+                margin-top: 40vh;
+            }
+
+            a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="resume">
+            <a href="Alex Despi Resume.pdf" download="Resume">DOWNLOAD</a>
+        </div>
+    </div>
+
+    <script>
+
+        const links = document.querySelectorAll('.wrapper .resume a');
+        links.forEach(btn => {
+            btn.addEventListener('mousedown', function (e) {
+
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+
+                let ripples = document.createElement('span');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                this.appendChild(ripples);
+
+                setTimeout(() => {
+                    ripples.remove()
+                }, 2500);
+
+            })
+        })
+
+    </script>
+</body>
+
+</html>
